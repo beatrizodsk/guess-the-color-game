@@ -1,12 +1,12 @@
 import React from 'react'
 
-const App = () => {
+const Timer = () => {
 
   return (
     <>
-    oi
+    Timer
     </>
   )
 }
 
-export default App
+export default Timer

@@ -1,12 +1,12 @@
 import React from 'react'
 
-const App = () => {
+const SideBar = () => {
 
   return (
     <>
-    oi
+    SideBar
     </>
   )
 }
 
-export default App
+export default SideBar
