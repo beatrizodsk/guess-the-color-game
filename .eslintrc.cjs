@@ -28,5 +28,6 @@ module.exports = {
     'no-unsafe-finally': 'off',
     'no-unused-vars': 'off',
     'react/jsx-key': 'off',
+    'indent': ['error', 2],
   },
 };

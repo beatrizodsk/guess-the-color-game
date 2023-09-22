@@ -1,10 +1,13 @@
 import React from 'react'
+import './SelectColor.css'
 
 const SelectColor = () => {
 
   return (
     <>
-    SelectColor
+      <div className='selectedcolor-container'>
+        SelectColor
+      </div>
     </>
   )
 }

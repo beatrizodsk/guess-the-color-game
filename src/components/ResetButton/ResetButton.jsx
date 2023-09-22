@@ -1,10 +1,11 @@
 import React from 'react'
+import './ResetButton.css'
 
 const ResetButton = () => {
 
   return (
     <>
-    ResetButton
+      <button className='reset-button'>ResetButton</button>
     </>
   )
 }

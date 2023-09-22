@@ -1,10 +1,11 @@
 import React from 'react'
+import Home from '/src/features/Home/Home'
 
 const App = () => {
 
   return (
     <>
-    oi
+      <Home/>
     </>
   )
 }

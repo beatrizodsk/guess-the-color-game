@@ -1,10 +1,13 @@
 import React from 'react'
+import './Scoreboard.css'
 
 const Scoreboard = () => {
 
   return (
     <>
-    Scoreboard
+      <div className='scoreboard-container'>
+        Scoreboard
+      </div>
     </>
   )
 }

@@ -1,10 +1,13 @@
 import React from 'react'
+import './GuessedColor.css'
 
 const GuessedColor = () => {
 
   return (
     <>
-    GuessedColor
+      <div className="guessedcolor-container">
+        GuessedColor
+      </div>
     </>
   )
 }
