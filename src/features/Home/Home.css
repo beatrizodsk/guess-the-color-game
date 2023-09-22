@@ -15,8 +15,14 @@
     position: relative;
     left: 15rem;
     height: 100vh;
+    width: 85%;
     clear: both;
     overflow: hidden;
+}
+
+.adapted {
+    left : 0 !important;
+    width: 100% !important;
 }
 
 .container-wrapper {

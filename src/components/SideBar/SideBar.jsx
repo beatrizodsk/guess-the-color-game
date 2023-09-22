@@ -8,7 +8,7 @@ const SideBar = () => {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      if (window.innerWidth <= 700) {
+      if (window.innerWidth <= 550) {
         setShowMenuButton(true);
       } else {
         setShowMenuButton(false);
