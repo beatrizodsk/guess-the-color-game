@@ -6,7 +6,15 @@ const GuessedColor = () => {
   return (
     <>
       <div className="guessedcolor-container">
-        GuessedColor
+        <button className="guessedcolor">
+          #onheuhfef
+        </button>
+        <button className="guessedcolor">
+          #onheuhfef
+        </button>
+        <button className="guessedcolor">
+          #onheuhfef
+        </button>
       </div>
     </>
   )

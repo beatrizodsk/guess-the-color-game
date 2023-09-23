@@ -20,11 +20,6 @@
 
 .hidden {
     display: none;
-
-}
-
-.visible {
-    
 }
 
 .expanded {
@@ -40,6 +35,57 @@
     justify-content: center;
   }
 
-h6 {
+h5 {
     margin: 0;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid salmon;
+}
+
+.header {
+    border: 1px solid yellowgreen;
+    width: 100%;
+    height: 2em;
+    padding-top: 1em;
+    text-align: center;
+}
+
+.header-obs {
+    border: 1px solid darkslateblue;
+    width: 100%;
+    height: 3em;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.sidebar-guessed-color {
+    border: 1px solid white;
+    width: 80.6px;
+    height: 47px;
+}
+
+.sidebar-correct-color {
+    border: 1px solid white;
+    width: 80.6px;
+    height: 47px;
+}
+
+.sidebar-score {
+    border: 1px solid white;
+    width: 80.6px;
+    height: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-content {
+    
 }

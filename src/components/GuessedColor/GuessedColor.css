@@ -1,3 +1,16 @@
 .guessedcolor-container {
-    margin-right: 10em;
+    border: 1px solid black;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 1em;
+    margin-bottom: 5em;
+}
+
+.guessedcolor {
+    border: 1px solid black;
+    padding: 10px;
 }

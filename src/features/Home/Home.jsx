@@ -7,7 +7,7 @@ import './Home.css'
 const Home = () => {
   useEffect(() => {
     const adaptScreenSize = () => {
-      if (window.innerWidth <= 550) {
+      if (window.innerWidth <= 750) {
         let el = document.getElementById('adaptContent');
 
         el.classList.add('adapted');

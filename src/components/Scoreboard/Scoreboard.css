@@ -1,3 +1,59 @@
 .scoreboard-container {
-    margin-right: 10em;
+    background-color: white;
+    display: flex;
+    max-width: 400px;
+    max-height: 80px;
+}
+
+.remaining-time {
+    border: 1px solid yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+
+.time-container {
+    border: 1px solid rgb(47, 187, 11);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.restart {
+    border: 1px solid rgb(77, 83, 139);
+}
+
+button {
+    height: 100%;
+}
+
+.score-container {
+    border: 1px solid rgb(202, 1, 1);
+    width: 40%;
+}
+
+.high-score {
+    border: 1px solid rgb(84, 122, 88);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 37px;
+    padding: 0 19px;
+}
+
+.score {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 37px;
+}
+
+h6 {
+    margin: 0;
 }

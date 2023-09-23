@@ -11,6 +11,7 @@ const Container = () => {
   return (
     <>
       <div className='container'>
+        <h3>Guess The Color</h3>
         <Scoreboard/>
         <Timer/>
         <SelectColor/>

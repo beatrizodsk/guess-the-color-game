@@ -8,7 +8,7 @@ const SideBar = () => {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      if (window.innerWidth <= 550) {
+      if (window.innerWidth <= 750) {
         setShowMenuButton(true);
       } else {
         setShowMenuButton(false);
@@ -27,12 +27,24 @@ const SideBar = () => {
 
   return (
     <>
-      <div className={`${showMenuButton ? 'hidden' : 'sidebar-container'} ${isMenuOpen ? 'expanded' : ''}`}>
-        <h6>Current/Latest game</h6>
+      <div className={`menu-expanded-container ${isMenuOpen ? 'expanded' : ''}`}>
+        <div className={`${showMenuButton ? 'hidden' : 'sidebar-container'}`}>
+          <div className="header-container">
+            <div className="header">
+              <h5>Current/Latest game</h5>
+            </div>
+            <div className="header-obs">
+              <div className="sidebar-guessed-color">Guessed Color</div>
+              <div className="sidebar-correct-color">Correct Color</div>
+              <div className="sidebar-score">Score</div>
+            </div>
+          </div>
+          <div className="sibedar-content"></div>
+        </div>
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`sandwich-menu-button ${showMenuButton ? 'visible' : 'hidden'}`}>
+        Menu
+        </button>
       </div>
-      <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`sandwich-menu-button ${showMenuButton ? 'visible' : 'hidden'}`}>
-        oi
-      </button>
     </>
   )
 }
