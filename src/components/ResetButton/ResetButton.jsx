@@ -6,7 +6,6 @@ const ResetButton = () => {
   const { resetAllData } = useAppState();
 
   const handleReset = () => {
-    // Chame a função para redefinir os dados do jogo
     resetAllData();
   };
 

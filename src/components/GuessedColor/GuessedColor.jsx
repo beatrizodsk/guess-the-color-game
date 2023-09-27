@@ -9,13 +9,12 @@ const GuessedColor = () => {
     remainingTime,
     gameStarted,
     correctColor,
-    startRound, // Adicione a função startRound do contexto
+    startRound,
     registerUserAnswer,
   } = useAppState();
   const [selectedColor, setSelectedColor] = useState('');
   const [options, setOptions] = useState([]);
 
-  // Monitora as mudanças nas cores atuais e na cor correta
   useEffect(() => {
     setSelectedColor('');
     generateOptions();
@@ -23,14 +22,13 @@ const GuessedColor = () => {
 
   const generateOptions = () => {
     if (currentGameColors.length === 0) {
-      return; // Não há cores para gerar opções
+      return;
     }
 
     const shuffledColors = currentGameColors.sort(() => Math.random() - 0.5);
     const correctIndex = shuffledColors.indexOf(correctColor);
 
-    // Garanta que haja apenas três opções
-    const options = shuffledColors.slice(correctIndex, correctIndex + 1); // Adicione a cor correta
+    const options = shuffledColors.slice(correctIndex, correctIndex + 1);
     while (options.length < 3) {
       const randomColor = shuffledColors.pop();
       if (randomColor !== correctColor) {
@@ -46,27 +44,26 @@ const GuessedColor = () => {
       setSelectedColor(color);
       handleAnswer(color);
       registerUserAnswer(color);
-      startRound(); // Inicie uma nova rodada após a seleção
+      startRound();
     }
   };
 
   return (
     <>
-      {gameStarted && ( // Condicional para mostrar conteúdo apenas quando o jogo estiver em andamento
-        <div className="guessedcolor-container">
-          {options.map((color, index) => (
-            <button
-              key={index}
-              className={`guessedcolor ${
-                selectedColor === color ? 'selected' : ''
-              }`}
-              onClick={() => selectColor(color)}
-            >
-              {color}
-            </button>
-          ))}
-        </div>
-      )}
+      <div className="guessedcolor-container">
+        {options.map((color, index) => (
+          <button
+            disabled={!gameStarted}
+            key={index}
+            className={`guessedcolor ${
+              selectedColor === color ? 'selected' : ''
+            }`}
+            onClick={() => selectColor(color)}
+          >
+            {color}
+          </button>
+        ))}
+      </div>
     </>
   );
 };
