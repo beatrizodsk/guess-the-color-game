@@ -1,15 +1,17 @@
 .sidebar-container {
     height: 100vh;
     width: 15rem;
-    background-color: red;
+    background-color: #ECEFF5;
     position: relative;
     float: left;
     margin-right: -15rem;
     display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .sandwich-menu-button {
-    background-color: violet;
+    /* background-color: violet; */
     position: fixed;
     height: 50px;
     width: 100px;
@@ -22,19 +24,6 @@
     display: none;
 }
 
-.expanded {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Adicione uma cor de fundo ou sombreamento */
-    z-index: 999; /* Certifique-se de que este elemento esteja acima dos outros */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
 h5 {
     margin: 0;
 }
@@ -44,11 +33,12 @@ h5 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid salmon;
+    color: black;
+    border: 1px solid white;
 }
 
 .header {
-    border: 1px solid yellowgreen;
+    border: 1px solid white;
     width: 100%;
     height: 2em;
     padding-top: 1em;
@@ -56,7 +46,7 @@ h5 {
 }
 
 .header-obs {
-    border: 1px solid darkslateblue;
+    /* border: 1px solid darkslateblue; */
     width: 100%;
     height: 3em;
     font-size: 15px;
@@ -67,25 +57,135 @@ h5 {
 
 .sidebar-guessed-color {
     border: 1px solid white;
-    width: 80.6px;
-    height: 47px;
-}
-
-.sidebar-correct-color {
-    border: 1px solid white;
-    width: 80.6px;
-    height: 47px;
-}
-
-.sidebar-score {
-    border: 1px solid white;
-    width: 80.6px;
+    width: 33.3%;
     height: 47px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.sidebar-correct-color {
+    border: 1px solid white;
+    width: 33.3%;
+    height: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-score {
+    border: 1px solid white;
+    width: 33.3%;
+    height: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .sidebar-content {
-    
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.correct-answer {
+    /* border: 1px solid white; */
+    display: flex;
+    align-items: center;
+    height: 3em;
+}
+
+.wrong-answer {
+    /* border: 1px solid white; */
+    display: flex;
+    align-items: center;
+    height: 3em;
+}
+
+.color-correct-answer-container {
+    /* border: 1px solid white; */
+    width: 33.3%;
+    height: 100%;
+    font-size: medium;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-wrong-answer-container {
+    /* border: 1px solid white; */
+    width: 33.3%;
+    height: 100%;
+    font-size: medium;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-correct-answer-container-wide {
+    /* border: 1px solid white; */
+    width: 70%;
+    height: 100%;
+    font-size: medium;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-correct-answer {
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.color-correct-answer-wide {
+    border-radius: 5px;
+    padding: 5px 40px;
+}
+
+.color-wrong-answer {
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.score-answer {
+    /* border: 1px solid white; */
+    width: 33.3%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.overlay-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Cor de fundo escura com transparência */
+    z-index: 999; /* Certifique-se de que este elemento esteja acima dos outros */
+    display: flex;
+    flex-direction: column;
+    color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.header-container-overlay {
+    /* border: 1px solid salmon; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5em;
+}
+
+.background-even {
+    background-color: #DBDFE6;
 }

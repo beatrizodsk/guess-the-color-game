@@ -1,12 +1,12 @@
 .scoreboard-container {
-    background-color: white;
+    background-color: #ECEFF5;
     display: flex;
     max-width: 400px;
     max-height: 80px;
 }
 
 .remaining-time {
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,7 @@
 }
 
 .time-container {
-    border: 1px solid rgb(47, 187, 11);
+    /* border: 1px solid rgb(47, 187, 11); */
     height: 100%;
     width: 100%;
     display: flex;
@@ -25,7 +25,7 @@
 }
 
 .restart {
-    border: 1px solid rgb(77, 83, 139);
+    /* border: 1px solid rgb(77, 83, 139); */
 }
 
 button {
@@ -33,12 +33,12 @@ button {
 }
 
 .score-container {
-    border: 1px solid rgb(202, 1, 1);
+    /* border: 1px solid rgb(202, 1, 1); */
     width: 40%;
 }
 
 .high-score {
-    border: 1px solid rgb(84, 122, 88);
+    /* border: 1px solid rgb(84, 122, 88); */
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -47,7 +47,7 @@ button {
 }
 
 .score {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: flex;
     align-items: center;
     justify-content: space-evenly;

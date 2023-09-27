@@ -1,15 +1,17 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { useAppState } from '../../contexts/AppStateContext';
 import './SelectColor.css'
 
 const SelectColor = () => {
-  const [showStartButton, setShowStartButton] = useState(true);
+  const { gameStarted, startGame, correctColor  } = useAppState();
 
   return (
     <>
+      {console.log(correctColor)}
       <div className='selectedcolor-container'>
-        <div className={`color-square ${showStartButton ? 'start-color-square' : ''}`}></div>
-        <button onClick={() => setShowStartButton(!showStartButton)} className={`${showStartButton ? 'start-button' : 'hidden'}`}>
+        <div className={`color-square ${!gameStarted ? 'start-color-square' : ''}`} style={{ backgroundColor: correctColor }}></div>
+        <button onClick={() => startGame()} className={`${!gameStarted ? 'start-button' : 'hidden'}`}>
         START
         </button>
       </div>
