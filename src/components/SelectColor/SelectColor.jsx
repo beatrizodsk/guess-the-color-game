@@ -8,7 +8,7 @@ const SelectColor = () => {
 
   return (
     <>
-      {console.log(correctColor)}
+      {/* {console.log(correctColor)} */}
       <div className='selectedcolor-container'>
         <div className={`color-square ${!gameStarted ? 'start-color-square' : ''}`} style={{ backgroundColor: correctColor }}></div>
         <button onClick={() => startGame()} className={`${!gameStarted ? 'start-button' : 'hidden'}`}>

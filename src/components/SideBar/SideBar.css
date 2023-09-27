@@ -189,3 +189,11 @@ h5 {
 .background-even {
     background-color: #DBDFE6;
 }
+
+.dark-text {
+    color: black;
+}
+
+.light-text {
+    color: white;
+}

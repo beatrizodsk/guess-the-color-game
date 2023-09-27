@@ -74,6 +74,8 @@ export const AppStateProvider = ({ children }) => {
 
   // Lógica para limpar todos os dados salvos pelo jogo
   const resetAllData = () => {
+    // Limpar os dados no localStorage
+    localStorage.removeItem("gameData");
     setGameHistory([]);
     setUserAnswers([]); // Limpar respostas do usuário
     setHighScore(0);
@@ -188,46 +190,55 @@ export const AppStateProvider = ({ children }) => {
     }
   }, [timerRunning]);
 
+  // Função para salvar os dados do jogo no localStorage
   const saveGameData = () => {
     const gameDataToSave = {
       highScore,
       gameHistory,
+      userAnswers, // Salvar as respostas do usuário
     };
     localStorage.setItem("gameData", JSON.stringify(gameDataToSave));
   };
 
-  // Efeitos secundários para persistência de dados
+  /// Efeito para carregar dados do localStorage ao iniciar o aplicativo
   useEffect(() => {
     // Carregando dados do localStorage ao iniciar o aplicativo
     const loadGameData = () => {
       const localStorageData = localStorage.getItem("gameData");
-      if (localStorageData) {
+      if (localStorageData && !gameStarted) {
         const parsedData = JSON.parse(localStorageData);
-        setHighScore(parsedData.highScore);
+        // Atualize o highScore apenas se o valor do localStorage for maior
+        if (parsedData.highScore > highScore) {
+          setHighScore(parsedData.highScore);
+        }
+        if (parsedData.userAnswers && parsedData.userAnswers.length > 0) {
+          setUserAnswers(parsedData.userAnswers);
+        }
         setGameHistory(parsedData.gameHistory);
       }
     };
-
+  
     loadGameData();
-
+  
     // Adicionando listener para o evento beforeunload
     window.addEventListener("beforeunload", () => {
       saveGameData(); // Chame a função sem passar parâmetros
     });
-
+  
     return () => {
-    // Removendo o listener quando o componente é desmontado
+      // Removendo o listener quando o componente é desmontado
       window.removeEventListener("beforeunload", () => {
         saveGameData(); // Chame a função sem passar parâmetros
       });
     };
-  }, []); // Este efeito será executado apenas uma vez ao iniciar o aplicativo
+  }, [highScore, userAnswers]); // Certifique-se de incluir highScore como dependência
+
 
   // useEffect separado para atualizações de highScore e gameHistory
   useEffect(() => {
   // Chamando saveGameData() apenas quando highScore ou gameHistory forem atualizados
-    saveGameData(highScore, gameHistory);
-  }, [highScore, gameHistory]);
+    saveGameData(highScore, gameHistory, userAnswers);
+  }, [highScore, gameHistory, userAnswers]);
 
   return (
     <AppStateContext.Provider
