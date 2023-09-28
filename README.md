@@ -42,27 +42,27 @@ This game is available on https://guess-the-color-game-zeta.vercel.app/.
 ## Images
 
 - Start (Web)
-<div style="text-align:center; margin: 15px 0 15px 0">
+<div style="display:flex; justify-content:center; margin: 15px 0 15px 0">
   <img src="https://imgur.com/UH9g9zc.jpg" alt="Logo" width="800px" />
 </div>
 
 - Playing (Web)
-<div style="text-align:center; margin: 15px 0 15px 0">
+<div style="display:flex; justify-content:center; margin: 15px 0 15px 0">
   <img src="https://imgur.com/dtTTZ5V.jpg" alt="Logo" width="800px" />
 </div>
 
 - Start (Mobile)
-<div style="text-align:center; margin: 15px 0 15px 0">
+<div style="display:flex; justify-content:center; margin: 15px 0 15px 0">
   <img src="https://imgur.com/akfCa4q.jpg" alt="Logo" width="200px" />
 </div>
 
 - Playing (Mobile)
-<div style="text-align:center; margin: 15px 0 15px 0">
+<div style="display:flex; justify-content:center; margin: 15px 0 15px 0">
   <img src="https://imgur.com/amj0C5N.jpg" alt="Logo" width="200px" />
 </div>
 
 - SideBar (Mobile)
-<div style="text-align:center; margin: 15px 0 15px 0">
+<div style="display:flex; justify-content:center; margin: 15px 0 15px 0">
   <img src="https://imgur.com/nnHlyIO.jpg" alt="Logo" width="200px" />
 </div>
 
