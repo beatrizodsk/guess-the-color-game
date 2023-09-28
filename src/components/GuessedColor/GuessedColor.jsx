@@ -13,31 +13,10 @@ const GuessedColor = () => {
     registerUserAnswer,
   } = useAppState();
   const [selectedColor, setSelectedColor] = useState('');
-  const [options, setOptions] = useState([]);
 
   useEffect(() => {
     setSelectedColor('');
-    generateOptions();
   }, [currentGameColors, correctColor]);
-
-  const generateOptions = () => {
-    if (currentGameColors.length === 0) {
-      return;
-    }
-
-    const shuffledColors = currentGameColors.sort(() => Math.random() - 0.5);
-    const correctIndex = shuffledColors.indexOf(correctColor);
-
-    const options = shuffledColors.slice(correctIndex, correctIndex + 1);
-    while (options.length < 3) {
-      const randomColor = shuffledColors.pop();
-      if (randomColor !== correctColor) {
-        options.push(randomColor);
-      }
-    }
-
-    setOptions(options.sort(() => Math.random() - 0.5));
-  };
 
   const selectColor = (color) => {
     if (gameStarted && remainingTime > 0) {
@@ -51,7 +30,7 @@ const GuessedColor = () => {
   return (
     <>
       <div className="guessedcolor-container">
-        {options.map((color, index) => (
+        {currentGameColors.map((color, index) => (
           <button
             disabled={!gameStarted || remainingTime <= 0}
             key={index}

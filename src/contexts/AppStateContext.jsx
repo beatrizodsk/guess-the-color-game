@@ -93,14 +93,22 @@ export const AppStateProvider = ({ children }) => {
 
   const generateRoundColors = () => {
     const colors = [];
-    while (colors.length < 3) {
+    const correctColor = generateRandomColor();
+  
+    while (colors.length < 2) {
       const randomColor = generateRandomColor();
-      if (!colors.includes(randomColor)) {
+      if (!colors.includes(randomColor) && randomColor !== correctColor) {
         colors.push(randomColor);
       }
     }
-    const correctColorIndex = Math.floor(Math.random() * 3);
-    colors.splice(correctColorIndex, 0, colors[correctColorIndex]);
+  
+    colors.push(correctColor);
+  
+    for (let i = colors.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [colors[i], colors[j]] = [colors[j], colors[i]];
+    }
+
     return colors;
   };
 

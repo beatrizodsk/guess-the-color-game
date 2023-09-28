@@ -17,7 +17,6 @@ const SideBar = () => {
 
     return luminance > 0.6 ? true : false;
   };
-  
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -45,13 +44,11 @@ const SideBar = () => {
           <div className="header">
             <h5>Current/Latest game</h5>
           </div>
-          {/* {gameStarted && ( */}
           <div className="header-obs">
             <div className="sidebar-guessed-color">Guessed Color</div>
             <div className="sidebar-correct-color">Correct Color</div>
             <div className="sidebar-score">Time</div>
           </div>
-          {/* )} */}
         </div>
         <div className="sibedar-content">
           {userAnswers.map((userAnswer, index) => (
