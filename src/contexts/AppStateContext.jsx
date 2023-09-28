@@ -220,8 +220,9 @@ export const AppStateProvider = ({ children }) => {
         if (parsedData.highScore > highScore) {
           setHighScore(parsedData.highScore);
         }
-        if (parsedData.userAnswers && parsedData.userAnswers.length > 0 && gameOver) {
+        if (parsedData.userAnswers && parsedData.userAnswers.length > 0) {
           setUserAnswers(parsedData.userAnswers);
+          if (gameOver) return;
         }
       }
     };

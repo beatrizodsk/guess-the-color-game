@@ -98,6 +98,8 @@ button:hover {
 button:disabled {
   opacity: 0.2;
   cursor: not-allowed;
+  box-shadow: none;
+  background-color: none;
 }
 
 hr {
