@@ -10,6 +10,7 @@ export const AppStateProvider = ({ children }) => {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [highScore, setHighScore] = useState(0);
+  const [highScoreRound, setHighScoreRound] = useState(0);
   const [score, setScore] = useState(0);
   const [currentGameColors, setCurrentGameColors] = useState([]);
   const [remainingTime, setRemainingTime] = useState(30);
@@ -74,6 +75,7 @@ export const AppStateProvider = ({ children }) => {
     localStorage.removeItem("gameData");
     setUserAnswers([]);
     setHighScore(0);
+    setHighScoreRound(0);
     setScore(0);
     setCorrectColor("");
     setCurrentGameColors([]);
@@ -140,10 +142,15 @@ export const AppStateProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (score > highScore) {
-      setHighScore(score);
+    if (score > highScoreRound) {
+      setHighScoreRound(score);
     }
-  }, [score, highScore]);
+    if ((gameOver || !gameStarted) && highScoreRound > highScore) {
+      setHighScore(highScoreRound)
+      return;
+    }
+
+  }, [score, highScore, gameOver, gameStarted, highScoreRound]);
 
   useEffect(() => {
     if (timerRunning) {
@@ -297,7 +304,7 @@ export const AppStateProvider = ({ children }) => {
         gameOver,
         elapsedTimeWithoutChoice,
         progressWidth,
-        setProgressWidth
+        setProgressWidth,
       }}
     >
       {children}
