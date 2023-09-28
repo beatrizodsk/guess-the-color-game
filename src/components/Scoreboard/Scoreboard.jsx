@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAppState } from '../../contexts/AppStateContext';
+import Button from '../Button/Button';
 import './Scoreboard.css';
 
 const Scoreboard = () => {
@@ -8,8 +9,6 @@ const Scoreboard = () => {
     highScore,
     score,
     gameStarted,
-    restartGame,
-    gameOver,
   } = useAppState();
 
   const displayRemainingTime = gameStarted ? remainingTime : 0;
@@ -23,9 +22,7 @@ const Scoreboard = () => {
             <div className="time">{displayRemainingTime}</div>
           </div>
         </div>
-        <div className="restart">
-          <button onClick={restartGame} disabled={!gameStarted || gameOver}>RESTART</button>
-        </div>
+        <Button type={'restart'}/>
         <div className="score-container">
           <div className="high-score">
             <h6>High Score</h6>

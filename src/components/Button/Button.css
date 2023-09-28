@@ -8,3 +8,14 @@
     bottom: 1rem;
     right: 1rem;
 }
+
+.restart-button {
+    height: 100%;
+}
+
+.start-button {
+    position: absolute;
+    height: 50px;
+    bottom: 6em;
+    right: 4.5em;
+}

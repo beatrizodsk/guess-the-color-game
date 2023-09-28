@@ -17,7 +17,7 @@ const Container = () => {
         <Timer/>
         <SelectColor/>
         <GuessedColor/>
-        <Button/>
+        <Button type={'reset'}/>
       </div>
     </>
   )

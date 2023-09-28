@@ -1,17 +1,16 @@
 import React from 'react'
 import { useAppState } from '../../contexts/AppStateContext';
+import Button from '../Button/Button';
 import './SelectColor.css'
 
 const SelectColor = () => {
-  const { gameStarted, startGame, correctColor  } = useAppState();
+  const { gameStarted, correctColor  } = useAppState();
 
   return (
     <>
       <div className='selectedcolor-container'>
         <div className={`color-square ${!gameStarted ? 'start-color-square' : ''}`} style={{ backgroundColor: correctColor }}></div>
-        <button onClick={() => startGame()} className={`${!gameStarted ? 'start-button' : 'hidden'}`}>
-        START
-        </button>
+        <Button type={'start'}/>
       </div>
     </>
   )
