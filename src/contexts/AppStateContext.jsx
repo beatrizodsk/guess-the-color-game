@@ -26,8 +26,6 @@ export const AppStateProvider = ({ children }) => {
     if (!gameStarted) {
       if (currentGameColors.length > 0) {
         setCurrentGameColors([]);
-        setScore(0);
-        setRemainingTime(30);
         setTimerRunning(false);
         setElapsedTimeWithoutChoice(0);
       }
@@ -52,7 +50,11 @@ export const AppStateProvider = ({ children }) => {
     if (!timerInterval) {
       const intervalId = setInterval(() => {
         if (remainingTime > 0) {
-          setRemainingTime((prevRemainingTime) => prevRemainingTime - 1);
+          setRemainingTime((prevRemainingTime) => {
+            if (prevRemainingTime > 0 && !gameOver) {
+              return prevRemainingTime - 1;
+            }
+          });
         } else {
           clearInterval(intervalId);
           restartGame();
@@ -64,7 +66,6 @@ export const AppStateProvider = ({ children }) => {
 
   const stopTimer = () => {
     setTimerRunning(false);
-    setScore(0);
     if (timerInterval) {
       clearInterval(timerInterval);
       setTimerInterval(null);
@@ -143,50 +144,28 @@ export const AppStateProvider = ({ children }) => {
 
   useEffect(() => {
     setHighScoreRound(score);
+    if (score < 0) {
+      setScore(0);
+    }
     if ((gameOver || !gameStarted) && highScoreRound > highScore) {
-      setHighScore(highScoreRound)
-      return;
+      setHighScore(highScoreRound);
     }
-
   }, [score, highScore, gameOver, gameStarted, highScoreRound]);
-
-  useEffect(() => {
-    if (timerRunning) {
-      const timer = setInterval(() => {
-        if (remainingTime > 0) {
-          setRemainingTime(remainingTime - 1);
-        } else {
-          setTimerRunning(false);
-        }
-        if (remainingTime === 0) {
-          setGameOver(true);
-          setTimerRunning(false);
-          setRemainingTime(0);
-          setGameStarted(false);
-          setCurrentGameColors([]);
-          setScore(0);
-          setCorrectColor("");
-        }
-      }, 1000);
-
-      return () => {
-        clearInterval(timer);
-      };
-    }
-  }, [timerRunning, remainingTime, gameOver]);
-
+  
   useEffect(() => {
     const interval = setInterval(() => {
+      setElapsedTimeWithoutChoice(0);
       if (timerRunning && !gameOver) {
         setElapsedTimeWithoutChoice((prevElapsedTime) => prevElapsedTime + 1);
+  
         if (elapsedTimeWithoutChoice >= 9) {
           setScore((prevScore) => prevScore - 2);
-          
+  
           setElapsedTimeWithoutChoice(0);
         }
       }
     }, 1000);
-    
+  
     return () => clearInterval(interval);
   }, [timerRunning, gameOver, elapsedTimeWithoutChoice]);
 
