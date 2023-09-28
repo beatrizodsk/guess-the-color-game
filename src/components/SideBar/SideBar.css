@@ -134,15 +134,7 @@ h5 {
     display: flex;
     align-items: center;
     height: 3em;
-    /* opacity: 0;
-    transform: translate(0, 10vh);
-    transition: all 1s;       */
 }
-
-/* .correct-answer-visible {
-    opacity: 1;
-    transform: translate(0, 0);
-} */
 
 .wrong-answer {
     display: flex;

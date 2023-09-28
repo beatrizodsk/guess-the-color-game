@@ -9,7 +9,6 @@ export const useAppState = () => {
 export const AppStateProvider = ({ children }) => {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  const [gameHistory, setGameHistory] = useState([]);
   const [highScore, setHighScore] = useState(0);
   const [score, setScore] = useState(0);
   const [currentGameColors, setCurrentGameColors] = useState([]);
@@ -29,6 +28,7 @@ export const AppStateProvider = ({ children }) => {
         setScore(0);
         setRemainingTime(30);
         setTimerRunning(false);
+        setElapsedTimeWithoutChoice(0);
       }
       setGameStarted(true);
       startRound();
@@ -37,8 +37,10 @@ export const AppStateProvider = ({ children }) => {
 
   const restartGame = () => {
     if (gameStarted) {
+      setUserAnswers([]);
       setCurrentGameColors([]);
       setScore(0);
+      setElapsedTimeWithoutChoice(0);
       setRemainingTime(30);
       setTimerRunning(false);
       startRound();
@@ -60,6 +62,8 @@ export const AppStateProvider = ({ children }) => {
   };
 
   const stopTimer = () => {
+    setTimerRunning(false);
+    setScore(0);
     if (timerInterval) {
       clearInterval(timerInterval);
       setTimerInterval(null);
@@ -68,7 +72,6 @@ export const AppStateProvider = ({ children }) => {
 
   const resetAllData = () => {
     localStorage.removeItem("gameData");
-    setGameHistory([]);
     setUserAnswers([]);
     setHighScore(0);
     setScore(0);
@@ -90,14 +93,22 @@ export const AppStateProvider = ({ children }) => {
 
   const generateRoundColors = () => {
     const colors = [];
-    while (colors.length < 3) {
+    const correctColor = generateRandomColor();
+  
+    while (colors.length < 2) {
       const randomColor = generateRandomColor();
-      if (!colors.includes(randomColor)) {
+      if (!colors.includes(randomColor) && randomColor !== correctColor) {
         colors.push(randomColor);
       }
     }
-    const correctColorIndex = Math.floor(Math.random() * 3);
-    colors.splice(correctColorIndex, 0, colors[correctColorIndex]);
+  
+    colors.push(correctColor);
+  
+    for (let i = colors.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [colors[i], colors[j]] = [colors[j], colors[i]];
+    }
+
     return colors;
   };
 
@@ -116,7 +127,6 @@ export const AppStateProvider = ({ children }) => {
       if (selectedColor === correctColor) {
         setScore((prevScore) => prevScore + 5);
       } else if (remainingTime > 0) {
-        console.log('errou 1 = ', remainingTime)
         setScore((prevScore) => prevScore - 1);
       }      
     }
@@ -177,21 +187,20 @@ export const AppStateProvider = ({ children }) => {
   }, [timerRunning, gameOver, elapsedTimeWithoutChoice]);
 
   useEffect(() => {
-    if (!timerRunning) {
-      const roundData = {
-        colors: currentGameColors,
-        time: 30 - remainingTime,
-      };
-      setGameHistory([roundData, ...gameHistory]);
+    if (!timerRunning && remainingTime <= 0 || remainingTime <= 0) {
+      stopTimer();
+      setScore(0);
+      setRemainingTime(0);
+      setGameOver(true);
       setCurrentGameColors([]);
       setGameStarted(false);
+      restartGame();
     }
   }, [timerRunning, remainingTime]);
 
   const saveGameData = () => {
     const gameDataToSave = {
       highScore,
-      gameHistory,
       userAnswers,
     };
     localStorage.setItem("gameData", JSON.stringify(gameDataToSave));
@@ -200,15 +209,14 @@ export const AppStateProvider = ({ children }) => {
   useEffect(() => {
     const loadGameData = () => {
       const localStorageData = localStorage.getItem("gameData");
-      if (localStorageData && !gameStarted) {
+      if (localStorageData && !gameStarted || localStorageData && gameOver) {
         const parsedData = JSON.parse(localStorageData);
         if (parsedData.highScore > highScore) {
           setHighScore(parsedData.highScore);
         }
-        if (parsedData.userAnswers && parsedData.userAnswers.length > 0 && gameStarted) {
+        if (parsedData.userAnswers && parsedData.userAnswers.length > 0) {
           setUserAnswers(parsedData.userAnswers);
         }
-        setGameHistory(parsedData.gameHistory);
       }
     };
   
@@ -226,8 +234,8 @@ export const AppStateProvider = ({ children }) => {
   }, [highScore, userAnswers, gameStarted]);
 
   useEffect(() => {
-    saveGameData(highScore, gameHistory, userAnswers);
-  }, [highScore, gameHistory, userAnswers]);
+    saveGameData(highScore, userAnswers);
+  }, [highScore, userAnswers]);
 
   const handleGameStartedChange = () => {
     if (gameStarted) {
@@ -277,7 +285,6 @@ export const AppStateProvider = ({ children }) => {
         handleAnswer,
         score,
         highScore,
-        gameHistory,
         currentGameColors,
         remainingTime,
         resetAllData,

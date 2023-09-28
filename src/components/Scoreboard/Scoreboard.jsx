@@ -9,6 +9,7 @@ const Scoreboard = () => {
     score,
     gameStarted,
     restartGame,
+    gameOver,
   } = useAppState();
 
   const displayRemainingTime = gameStarted ? remainingTime : 0;
@@ -23,7 +24,7 @@ const Scoreboard = () => {
           </div>
         </div>
         <div className="restart">
-          <button onClick={restartGame} disabled={!gameStarted}>RESTART</button>
+          <button onClick={restartGame} disabled={!gameStarted || gameOver}>RESTART</button>
         </div>
         <div className="score-container">
           <div className="high-score">
