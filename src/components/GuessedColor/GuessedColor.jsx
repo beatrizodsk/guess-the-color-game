@@ -53,7 +53,7 @@ const GuessedColor = () => {
       <div className="guessedcolor-container">
         {options.map((color, index) => (
           <button
-            disabled={!gameStarted}
+            disabled={!gameStarted || remainingTime <= 0}
             key={index}
             className={`guessedcolor ${
               selectedColor === color ? 'selected' : ''
