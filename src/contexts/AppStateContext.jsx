@@ -101,7 +101,6 @@ export const AppStateProvider = ({ children }) => {
         colors.push(randomColor);
       }
     }
-  
     colors.push(correctColor);
   
     for (let i = colors.length - 1; i > 0; i--) {
