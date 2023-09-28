@@ -47,7 +47,7 @@ const SideBar = () => {
           <div className="header-obs">
             <div className="sidebar-guessed-color">Guessed Color</div>
             <div className="sidebar-correct-color">Correct Color</div>
-            <div className="sidebar-score">Time</div>
+            <div className="sidebar-score">Score</div>
           </div>
         </div>
         <div className="sibedar-content">
@@ -61,7 +61,8 @@ const SideBar = () => {
                     </div>
                   </div>
                   <div className="score-answer">
-                    {userAnswer.answerTime} s
+                    <img width="20" height="20" src="https://img.icons8.com/papercut/60/checked.png" alt="checked"/>
+                    {userAnswer.answerTime}s
                   </div>
                 </div>
               ) : (
@@ -77,7 +78,8 @@ const SideBar = () => {
                     </div>
                   </div>
                   <div className="score-answer">
-                    {userAnswer.answerTime} s
+                    <img width="20" height="20" src="https://img.icons8.com/fluency/48/cancel.png" alt="cancel"/>
+                    {userAnswer.answerTime}s
                   </div>
                 </div>
               )}
@@ -85,9 +87,13 @@ const SideBar = () => {
           ))}
         </div>
       </div>
-      <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`sandwich-menu-button ${showMenuButton ? 'visible' : 'hidden'}`}>
-        Menu
-      </button>
+      <div onClick={() => setIsMenuOpen(!isMenuOpen)} className={`sandwich-menu-button ${showMenuButton ? 'visible' : 'hidden'}`}>
+        {isMenuOpen ? (
+          <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/ffffff/menu--v1.png" alt="menu--v1" />
+        ) : (
+          <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/menu--v1.png" alt="menu--v1" />
+        )}
+      </div>
       {isMenuOpen && (
         <div className="overlay-content">
           <div className="header-container-overlay">
@@ -97,7 +103,7 @@ const SideBar = () => {
             <div className="header-obs-overlay">
               <div className="sidebar-guessed-color-overlay">Guessed Color</div>
               <div className="sidebar-correct-color-overlay">Correct Color</div>
-              <div className="sidebar-score">Time</div>
+              <div className="sidebar-score">Score</div>
             </div>
           </div>
           <div className="sibedar-content">
@@ -111,7 +117,8 @@ const SideBar = () => {
                       </div>
                     </div>
                     <div className="score-answer">
-                      {userAnswer.answerTime} s
+                      <img width="20" height="20" src="https://img.icons8.com/papercut/60/checked.png" alt="checked"/>
+                      {userAnswer.answerTime}s
                     </div>
                   </div>
                 ) : (
@@ -127,7 +134,8 @@ const SideBar = () => {
                       </div>
                     </div>
                     <div className="score-answer">
-                      {userAnswer.answerTime} s
+                      <img width="20" height="20" src="https://img.icons8.com/fluency/48/cancel.png" alt="cancel"/>
+                      {userAnswer.answerTime}s
                     </div>
                   </div>
                 )}

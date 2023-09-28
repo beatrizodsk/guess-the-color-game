@@ -1,8 +1,8 @@
 import React from 'react';
 import { useAppState } from '../../contexts/AppStateContext';
-import './ResetButton.css';
+import './Button.css';
 
-const ResetButton = () => {
+const Button = () => {
   const { resetAllData } = useAppState();
 
   const handleReset = () => {
@@ -18,4 +18,4 @@ const ResetButton = () => {
   );
 };
 
-export default ResetButton;
+export default Button;
