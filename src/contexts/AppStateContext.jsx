@@ -213,7 +213,7 @@ export const AppStateProvider = ({ children }) => {
         if (parsedData.highScore > highScore) {
           setHighScore(parsedData.highScore);
         }
-        if (parsedData.userAnswers && parsedData.userAnswers.length > 0) {
+        if (parsedData.userAnswers && parsedData.userAnswers.length > 0 && gameOver) {
           setUserAnswers(parsedData.userAnswers);
         }
       }
