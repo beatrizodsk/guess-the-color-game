@@ -1,0 +1,25 @@
+.selectedcolor-container {
+    position: relative;
+}
+
+.color-square {
+    position: relative;
+    min-width: 15em;
+    min-height: 15em;
+    background-color: red;
+}
+
+.start-color-square {
+    opacity: 0.5;
+}
+
+.start-button {
+    position: absolute;
+    height: 50px;
+    bottom: 6em;
+    right: 4.5em;
+}
+
+.hidden {
+    display: none;
+}

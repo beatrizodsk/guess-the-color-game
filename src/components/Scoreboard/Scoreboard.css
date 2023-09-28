@@ -1,0 +1,57 @@
+.scoreboard-container {
+    background-color: #ECEFF5;
+    display: flex;
+    max-width: 400px;
+    max-height: 80px;
+    border: 1px solid #BDBFC4;
+    border-radius: 5px;
+}
+
+.remaining-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+
+.time-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.restart {
+    
+}
+
+button {
+    height: 100%;
+}
+
+.score-container {
+    width: 40%;
+}
+
+.high-score {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 37px;
+    padding: 0 19px;
+    border-bottom: 1px solid #BDBFC4;
+}
+
+.score {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 37px;
+}
+
+h6 {
+    margin: 0;
+}
