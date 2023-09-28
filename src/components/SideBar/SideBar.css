@@ -14,11 +14,18 @@
 
 .sandwich-menu-button {
     position: fixed;
-    height: 50px;
-    width: 100px;
     left: 1rem;
     top: 1rem;
     z-index: 1000;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.sandwich-menu-button:hover,
+.sandwich-menu-button:focus {
+    transform: scale(1.1);
 }
 
 .hidden {
@@ -75,24 +82,7 @@ h5 {
     background-color: #DBDFE6;
 }
 
-.sidebar-guessed-color {
-    width: 33.3%;
-    height: 47px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-right: 2px solid #DBDFE6;
-}
-
-.sidebar-guessed-color-overlay {
-    width: 33.3%;
-    height: 47px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-right: 2px solid #ECEFF5;
-}
-
+.sidebar-guessed-color,
 .sidebar-correct-color {
     width: 33.3%;
     height: 47px;
@@ -102,6 +92,7 @@ h5 {
     border-right: 2px solid #DBDFE6;
 }
 
+.sidebar-guessed-color-overlay,
 .sidebar-correct-color-overlay {
     width: 33.3%;
     height: 47px;
@@ -130,12 +121,7 @@ h5 {
     overflow-x: hidden;
 }
 
-.correct-answer {
-    display: flex;
-    align-items: center;
-    height: 3em;
-}
-
+.correct-answer,
 .wrong-answer {
     display: flex;
     align-items: center;
@@ -169,19 +155,17 @@ h5 {
     align-items: center;
 }
 
-.color-correct-answer {
-    border-radius: 5px;
-    padding: 5px;
-}
-
-.color-correct-answer-wide {
-    border-radius: 5px;
-    padding: 5px 40px;
-}
-
+.color-correct-answer,
 .color-wrong-answer {
     border-radius: 5px;
     padding: 5px;
+    cursor: pointer;
+}
+
+.color-correct-answer-wide{
+    border-radius: 5px;
+    padding: 5px 40px;
+    cursor: pointer;
 }
 
 .score-answer {
@@ -210,16 +194,13 @@ h5 {
     scrollbar-color: #DBDFE6 transparent;
 }
 
-.even-row {
+.even-row,
+.odd-row-overlay {
     background-color: #DBDFE6;
 }
 
 .even-row-overlay {
     background-color: #ECEFF5;
-}
-
-.odd-row-overlay {
-    background-color: #DBDFE6;
 }
 
 .dark-text {
@@ -230,30 +211,19 @@ h5 {
     color: white;
 }
 
-.sidebar-container::-webkit-scrollbar {
-    width: 3px;
-    height: 3px;
-}
-
-.sidebar-container::-webkit-scrollbar-track {
-    background: transparent;
-    padding: 2px;
-}
-
-.sidebar-container::-webkit-scrollbar-thumb {
-    background-color: #ced4df;
-}
-
+.sidebar-container::-webkit-scrollbar,
 .overlay-content::-webkit-scrollbar {
     width: 3px;
     height: 3px;
 }
 
+.sidebar-container::-webkit-scrollbar-track,
 .overlay-content::-webkit-scrollbar-track {
     background: transparent;
     padding: 2px;
 }
 
+.sidebar-container::-webkit-scrollbar-thumb,
 .overlay-content::-webkit-scrollbar-thumb {
     background-color: #ced4df;
 }

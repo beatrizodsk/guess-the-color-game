@@ -7,16 +7,3 @@
     width: 100%;
     overflow: hidden;
 }
-
-.title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.rules {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 1em;
-}
