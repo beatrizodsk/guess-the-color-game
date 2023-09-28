@@ -1,9 +1,9 @@
 import React from 'react'
 import { useAppState } from '../../contexts/AppStateContext';
 import Button from '../Button/Button';
-import './SelectColor.css'
+import './ColorDisplay.css'
 
-const SelectColor = () => {
+const ColorDisplay = () => {
   const { gameStarted, correctColor  } = useAppState();
 
   return (
@@ -16,4 +16,4 @@ const SelectColor = () => {
   )
 }
 
-export default SelectColor
+export default ColorDisplay

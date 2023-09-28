@@ -1,7 +1,7 @@
 import React from 'react';
 import './Modal.css';
 
-const SelectColor = ({ togglePopup }) => {
+const Modal = ({ togglePopup }) => {
   const onClose = () => {
     togglePopup();
   };
@@ -34,4 +34,4 @@ const SelectColor = ({ togglePopup }) => {
   );
 };
 
-export default SelectColor;
+export default Modal;

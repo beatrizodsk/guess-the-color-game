@@ -1,9 +1,9 @@
 import React from 'react';
 import { useAppState } from '../../contexts/AppStateContext';
 import Button from '../Button/Button';
-import './Scoreboard.css';
+import './ScoreBoard.css';
 
-const Scoreboard = () => {
+const ScoreBoard = () => {
   const {
     remainingTime,
     highScore,
@@ -38,4 +38,4 @@ const Scoreboard = () => {
   );
 };
 
-export default Scoreboard;
+export default ScoreBoard;

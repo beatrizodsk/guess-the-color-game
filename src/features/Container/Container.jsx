@@ -1,7 +1,7 @@
 import React from 'react'
-import Scoreboard from '@/Scoreboard/Scoreboard'
+import ScoreBoard from '@/ScoreBoard/ScoreBoard'
 import Timer from '@/Timer/Timer'
-import SelectColor from '@/SelectColor/SelectColor'
+import ColorDisplay from '@/ColorDisplay/ColorDisplay'
 import GuessedColor from '@/GuessedColor/GuessedColor'
 import Button from '@/Button/Button'
 import Header from '@/Header/Header'
@@ -13,9 +13,9 @@ const Container = () => {
     <>
       <div className='container'>
         <Header/>
-        <Scoreboard/>
+        <ScoreBoard/>
         <Timer/>
-        <SelectColor/>
+        <ColorDisplay/>
         <GuessedColor/>
         <Button type={'reset'}/>
       </div>
