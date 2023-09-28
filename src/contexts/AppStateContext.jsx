@@ -142,9 +142,7 @@ export const AppStateProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (score > highScoreRound) {
-      setHighScoreRound(score);
-    }
+    setHighScoreRound(score);
     if ((gameOver || !gameStarted) && highScoreRound > highScore) {
       setHighScore(highScoreRound)
       return;
