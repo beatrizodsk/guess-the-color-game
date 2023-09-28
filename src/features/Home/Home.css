@@ -22,6 +22,7 @@
 .adapted {
     left : 0 !important;
     width: 100% !important;
+    overflow: hidden;
 }
 
 .container-wrapper {
