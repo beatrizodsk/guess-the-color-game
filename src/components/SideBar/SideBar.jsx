@@ -4,27 +4,20 @@ import { useState, useEffect } from 'react';
 import { useAppState } from '../../contexts/AppStateContext';
 
 const SideBar = () => {
-  const { userAnswers, gameStarted } = useAppState();
+  const { userAnswers } = useAppState();
   const [showMenuButton, setShowMenuButton] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const isIndexEven = (index) => {
-    return index % 2 === 0;
-  };
-
-  // Função para verificar se uma cor é clara ou escura
-  const isColorDark = (hexColor) => {
-    // Converter cor hexadecimal para RGB
+  const isTextDark = (hexColor) => {
     const r = parseInt(hexColor.slice(1, 3), 16);
     const g = parseInt(hexColor.slice(3, 5), 16);
     const b = parseInt(hexColor.slice(5, 7), 16);
 
-    // Calcular o brilho da cor
-    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
 
-    // Retorna verdadeiro se a cor for escura, falso se for clara
-    return brightness < 128; // Você pode ajustar esse valor se necessário
+    return luminance > 0.6 ? true : false;
   };
+  
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -62,10 +55,9 @@ const SideBar = () => {
         </div>
         <div className="sibedar-content">
           {userAnswers.map((userAnswer, index) => (
-            <div key={index}>
+            <div key={index} className={`${index % 2 === 0 ? 'even-row' : ''}`}>
               {userAnswer.selectedColor === userAnswer.correctColor ? (
-                // Exibir informações de resposta correta
-                <div className={`correct-answer ${isColorDark(userAnswer.selectedColor) ? 'light-text' : 'dark-text'}`}>
+                <div className={`correct-answer ${isTextDark(userAnswer.selectedColor) ? 'dark-text' : 'light-text'}`}>
                   <div className="color-correct-answer-container-wide">
                     <div className="color-correct-answer-wide" style={{ backgroundColor: userAnswer.correctColor }}>
                       {userAnswer.selectedColor}
@@ -76,8 +68,7 @@ const SideBar = () => {
                   </div>
                 </div>
               ) : (
-                // Exibir informações de resposta errada
-                <div className={`wrong-answer ${isColorDark(userAnswer.selectedColor) ? 'light-text' : 'dark-text'}`}>
+                <div className={`wrong-answer ${isTextDark(userAnswer.selectedColor) ? 'dark-text' : 'light-text'}`}>
                   <div className="color-wrong-answer-container">
                     <div className="color-wrong-answer" style={{ backgroundColor: userAnswer.selectedColor }}>
                       {userAnswer.selectedColor}
@@ -106,20 +97,17 @@ const SideBar = () => {
             <div className="header">
               <h5>Current/Latest game</h5>
             </div>
-            {/* {gameStarted && ( */}
-            <div className="header-obs">
-              <div className="sidebar-guessed-color">Guessed Color</div>
-              <div className="sidebar-correct-color">Correct Color</div>
+            <div className="header-obs-overlay">
+              <div className="sidebar-guessed-color-overlay">Guessed Color</div>
+              <div className="sidebar-correct-color-overlay">Correct Color</div>
               <div className="sidebar-score">Time</div>
             </div>
-            {/* )} */}
           </div>
           <div className="sibedar-content">
             {userAnswers.map((userAnswer, index) => (
-              <div key={index}>
+              <div key={index} className={`${index % 2 === 0 ? 'even-row-overlay' : 'odd-row-overlay'}`}>
                 {userAnswer.selectedColor === userAnswer.correctColor ? (
-                // Exibir informações de resposta correta
-                  <div className={`correct-answer ${isColorDark(userAnswer.selectedColor) ? 'light-text' : 'dark-text'}`}>
+                  <div className={`correct-answer ${isTextDark(userAnswer.selectedColor) ? 'dark-text' : 'light-text'}`}>
                     <div className="color-correct-answer-container-wide">
                       <div className="color-correct-answer-wide" style={{ backgroundColor: userAnswer.correctColor }}>
                         {userAnswer.selectedColor}
@@ -130,8 +118,7 @@ const SideBar = () => {
                     </div>
                   </div>
                 ) : (
-                // Exibir informações de resposta errada
-                  <div className={`wrong-answer ${isColorDark(userAnswer.selectedColor) ? 'light-text' : 'dark-text'}`}>
+                  <div className={`wrong-answer ${isTextDark(userAnswer.selectedColor) ? 'dark-text' : 'light-text'}`}>
                     <div className="color-wrong-answer-container">
                       <div className="color-wrong-answer" style={{ backgroundColor: userAnswer.selectedColor }}>
                         {userAnswer.selectedColor}

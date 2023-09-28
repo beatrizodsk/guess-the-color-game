@@ -1,7 +1,10 @@
 .reset-button {
     height: 50px;
-    width: 160px;
+    width: 108.97px;
     position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     bottom: 1rem;
     right: 1rem;
 }

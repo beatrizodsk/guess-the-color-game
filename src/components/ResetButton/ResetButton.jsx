@@ -12,7 +12,7 @@ const ResetButton = () => {
   return (
     <>
       <button className="reset-button" onClick={handleReset}>
-        ResetButton
+        Reset
       </button>
     </>
   );
