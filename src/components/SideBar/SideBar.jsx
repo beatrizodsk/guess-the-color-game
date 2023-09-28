@@ -87,9 +87,13 @@ const SideBar = () => {
           ))}
         </div>
       </div>
-      <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`sandwich-menu-button ${showMenuButton ? 'visible' : 'hidden'}`}>
-        Menu
-      </button>
+      <div onClick={() => setIsMenuOpen(!isMenuOpen)} className={`sandwich-menu-button ${showMenuButton ? 'visible' : 'hidden'}`}>
+        {isMenuOpen ? (
+          <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/ffffff/menu--v1.png" alt="menu--v1" />
+        ) : (
+          <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/menu--v1.png" alt="menu--v1" />
+        )}
+      </div>
       {isMenuOpen && (
         <div className="overlay-content">
           <div className="header-container-overlay">
