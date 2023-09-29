@@ -18,7 +18,6 @@ const GuessedColor = () => {
   useEffect(() => {
     const shuffled = shuffleArray(currentGameColors);
     setShuffledColors(shuffled);
-    setSelectedColor('');
   }, [currentGameColors, correctColor]);
 
   const shuffleArray = (array) => {
@@ -37,6 +36,7 @@ const GuessedColor = () => {
       registerUserAnswer(color);
       startRound();
     }
+    setSelectedColor('');
   };
 
   return (

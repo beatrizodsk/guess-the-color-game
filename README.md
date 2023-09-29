@@ -68,7 +68,7 @@ This game is available on https://guess-the-color-game-zeta.vercel.app/.
 
 ## Installing
 
-Siga as instruções abaixo para configurar o ambiente de desenvolvimento e executar o projeto localmente.
+Follow the instructions bellow to configurate the development envrinment and execute the game locally.
 
 1. Clone the repository:
 

@@ -23,15 +23,18 @@ export const AppStateProvider = ({ children }) => {
   const [progressWidth, setProgressWidth] = useState('100%');
 
   const startGame = () => {
-    if (!gameStarted) {
-      if (currentGameColors.length > 0) {
-        setCurrentGameColors([]);
-        setTimerRunning(false);
-        setElapsedTimeWithoutChoice(0);
-      }
-      setGameStarted(true);
-      startRound();
+    setGameOver(false);
+    setGameStarted(true);
+    setRemainingTime(30);
+    setUserAnswers([]);
+    startRound();
+  };
+
+  const handleGameOver = () => {
+    if (gameOver) {
+      setGameStarted(false);
     }
+    return;
   };
 
   const restartGame = () => {
@@ -41,7 +44,7 @@ export const AppStateProvider = ({ children }) => {
       setScore(0);
       setElapsedTimeWithoutChoice(0);
       setRemainingTime(30);
-      setTimerRunning(false);
+      setTimerRunning(true);
       startRound();
     }
   };
@@ -65,7 +68,6 @@ export const AppStateProvider = ({ children }) => {
   };
 
   const stopTimer = () => {
-    setTimerRunning(false);
     if (timerInterval) {
       clearInterval(timerInterval);
       setTimerInterval(null);
@@ -83,14 +85,13 @@ export const AppStateProvider = ({ children }) => {
     setRemainingTime(30);
     setTimerRunning(false);
     setGameStarted(false);
+    setGameOver(false);
   };
 
   const startRound = () => {
     const colors = generateRoundColors();
     setCurrentGameColors(colors);
     setTimerRunning(true);
-    setGameOver(false);
-
     setCorrectColor(colors[0]);
   };
 
@@ -154,7 +155,6 @@ export const AppStateProvider = ({ children }) => {
   
   useEffect(() => {
     const interval = setInterval(() => {
-      setElapsedTimeWithoutChoice(0);
       if (timerRunning && !gameOver) {
         setElapsedTimeWithoutChoice((prevElapsedTime) => prevElapsedTime + 1);
   
@@ -170,16 +170,15 @@ export const AppStateProvider = ({ children }) => {
   }, [timerRunning, gameOver, elapsedTimeWithoutChoice]);
 
   useEffect(() => {
-    if (!timerRunning && remainingTime <= 0 || remainingTime <= 0) {
-      stopTimer();
+    if (timerRunning && remainingTime <= 0) setTimerRunning(false);
+    if (!timerRunning && remainingTime <= 0) {
       setScore(0);
       setRemainingTime(0);
-      setGameOver(true);
       setCurrentGameColors([]);
-      setGameStarted(false);
-      restartGame();
+      setGameOver(true);
+      handleGameOver();
     }
-  }, [timerRunning, remainingTime]);
+  }, [timerRunning, remainingTime, startGame]);
 
   const saveGameData = () => {
     const gameDataToSave = {
@@ -197,9 +196,9 @@ export const AppStateProvider = ({ children }) => {
         if (parsedData.highScore > highScore) {
           setHighScore(parsedData.highScore);
         }
-        if (parsedData.userAnswers && parsedData.userAnswers.length > 0) {
-          setUserAnswers(parsedData.userAnswers);
+        if (parsedData.userAnswers && parsedData.userAnswers.length > 0 ) {
           if (gameOver) return;
+          setUserAnswers(parsedData.userAnswers);
         }
       }
     };
@@ -232,7 +231,7 @@ export const AppStateProvider = ({ children }) => {
 
   useEffect(() => {
     handleGameStartedChange();
-  }, [gameStarted, startTimer, stopTimer]);
+  }, [timerRunning]);
 
   const handleProgressWidthChange = () => {
     if (parseFloat(progressWidth) > 0) {
